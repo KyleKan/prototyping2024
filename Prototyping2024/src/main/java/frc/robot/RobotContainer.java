@@ -31,12 +31,12 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandXboxController m_driverController = new CommandXboxController(
-      OperatorConstants.kDriverControllerPort);
+  /*private final CommandXboxController m_driverController = new CommandXboxController(
+      OperatorConstants.kDriverControllerPort);*/
 
   private final CommandJoystick mDriver = new CommandJoystick(OperatorConstants.mDriverControllerPort);
   private final CommandJoystick mCoDriver = new CommandJoystick(OperatorConstants.cDriverControllerPort);
-  private Trigger joystickA = new Trigger(mDriver.button(1, null));
+  private Trigger joystickA = new Trigger(mDriver.button(12));
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -68,8 +68,8 @@ public class RobotContainer {
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is
     // pressed,
     // cancelling on release.
-    m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
-    joystickA.toggleOnTrue(new Shoot(m_Shooter, (mDriver.getThrottle()+1)/2, (mCoDriver.getThrottle()+1)/2));
+    //m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+    joystickA.toggleOnTrue(new Shoot(m_Shooter,() -> (-mDriver.getThrottle()+1)/2, () -> (mCoDriver.getThrottle()+1)/2));
   }
 
   /**

@@ -15,10 +15,10 @@ public class Shooter extends SubsystemBase {
 
   /** Creates a new Shooter. */
   public Shooter() {
-    ShooterM1.setInverted(Constants.Shooter.sm1InvertMode);
-    ShooterM2.setInverted(Constants.Shooter.sm2InvertMode);
-    ShooterM1.setNeutralMode(Constants.Shooter.sm1NeutralMode);
-    ShooterM2.setNeutralMode(Constants.Shooter.sm2NeutralMode);
+    //ShooterM1.setInverted(Constants.Shooter.sm1InvertMode);
+    //ShooterM2.setInverted(Constants.Shooter.sm2InvertMode);
+    //ShooterM1.setNeutralMode(Constants.Shooter.sm1NeutralMode);
+    //ShooterM2.setNeutralMode(Constants.Shooter.sm2NeutralMode);
     ShooterM1 = new TalonFX(Constants.Shooter.ShooterMotor1);
     ShooterM2 = new TalonFX(Constants.Shooter.ShooterMotor2);
   }

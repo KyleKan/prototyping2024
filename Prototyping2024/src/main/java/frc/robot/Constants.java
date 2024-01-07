@@ -21,8 +21,8 @@ public static final class Shooter{
   public static final int ShooterMotor1 = 1;
   public static final int ShooterMotor2 = 2;
 
-  public static final NeutralModeValue sm1NeutralMode = NeutralModeValue.Brake;
-  public static final NeutralModeValue sm2NeutralMode = NeutralModeValue.Brake;
+  //public static final NeutralModeValue sm1NeutralMode = NeutralModeValue.Brake;
+  //public static final NeutralModeValue sm2NeutralMode = NeutralModeValue.Brake;
 
   public static boolean sm1InvertMode = true;
   public static boolean sm2InvertMode = true;
