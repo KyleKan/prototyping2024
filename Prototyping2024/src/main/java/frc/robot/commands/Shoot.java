@@ -4,15 +4,17 @@
 
 package frc.robot.commands;
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Shooter;
 
 public class Shoot extends Command {
   private Shooter mShooter;
-  private double x;
-  private double y;
+  private DoubleSupplier x;
+  private DoubleSupplier y;
   /** Creates a new Shoot. */
-  public Shoot(Shooter mShooter, double xy, double yz) {
+  public Shoot(Shooter mShooter, DoubleSupplier xy, DoubleSupplier yz) {
     this.mShooter = mShooter;
     this.x = xy;
     this.y = yz;
@@ -27,12 +29,15 @@ public class Shoot extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mShooter.SETSpeed(x);
-    mShooter.SETSpeed2(y);
+    mShooter.SETSpeed(x.getAsDouble());
+    mShooter.SETSpeed2(y.getAsDouble());
   }
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    mShooter.SETSpeed(0);
+    mShooter.SETSpeed2(0);
+  }
 
   // Returns true when the command should end.
   @Override

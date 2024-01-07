@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -14,10 +15,10 @@ public class Shooter extends SubsystemBase {
   private TalonFX ShooterM2;
   /** Creates a new Shooter. */
   public Shooter() {
-    ShooterM1.setInverted(Constants.Shooter.sm1InvertMode);
-    ShooterM2.setInverted(Constants.Shooter.sm2InvertMode);
-    ShooterM1.setNeutralMode(Constants.Shooter.sm1NeutralMode);
-    ShooterM2.setNeutralMode(Constants.Shooter.sm2NeutralMode);
+    //ShooterM1.setInverted(Constants.Shooter.sm1InvertMode);
+    //ShooterM2.setInverted(Constants.Shooter.sm2InvertMode);
+    //ShooterM1.setNeutralMode(Constants.Shooter.sm1NeutralMode);
+    //ShooterM2.setNeutralMode(Constants.Shooter.sm2NeutralMode);
     ShooterM1 = new TalonFX(Constants.Shooter.Shootermotor1);
     ShooterM2 = new TalonFX(Constants.Shooter.Shootermotor2);
   }
@@ -29,6 +30,8 @@ public void SETSpeed2(double MotorSpeed){
 }
   @Override
   public void periodic() {
+    SmartDashboard.putNumber("RPMMotor1", 60* ShooterM1.getVelocity().getValueAsDouble());
+    SmartDashboard.putNumber("RPMMotor2", 60* ShooterM2.getVelocity().getValueAsDouble());
     // This method will be called once per scheduler run
   }
 }
