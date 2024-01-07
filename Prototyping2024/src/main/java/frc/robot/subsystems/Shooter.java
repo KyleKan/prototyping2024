@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -35,6 +36,7 @@ public class Shooter extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-
+      SmartDashboard.putNumber("rpmShooterM1", ShooterM1.getVelocity().getValueAsDouble()*60);
+      SmartDashboard.putNumber("rpmShooterM2",60 *  ShooterM2.getVelocity().getValueAsDouble());
   }
 }

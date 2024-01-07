@@ -69,7 +69,7 @@ public class RobotContainer {
     // pressed,
     // cancelling on release.
     //m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
-    joystickA.toggleOnTrue(new Shoot(m_Shooter,() -> (-mDriver.getThrottle()+1)/2, () -> (mCoDriver.getThrottle()+1)/2));
+    joystickA.toggleOnTrue(new Shoot(m_Shooter,() -> (-mDriver.getThrottle()+1)/2, () -> (-mCoDriver.getThrottle()+1)/2));
   }
 
   /**
