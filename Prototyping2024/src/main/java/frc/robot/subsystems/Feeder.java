@@ -21,15 +21,15 @@ public class Feeder extends SubsystemBase {
       case S_BallEnters:
       BallEnters();
         break;
-    
-      case S_BallLeaves:
-      BallLeaves();
+      
+        default:
         break;
     }
   }
 
   public void BallEnters(){
-    mFeederEnumState = FeederEnumState.S_BallEnters;
+
+    
   }
   public void BallLeaves(){
 
