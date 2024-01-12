@@ -14,24 +14,25 @@ public class Feeder extends SubsystemBase {
   public FeederEnumState mFeederEnumState;
   /** Creates a new Feeder. */
   public enum FeederEnumState{
-    S_BallEnters, S_BallLeaves
+    S_BallEntersFeeder, S_BallLeavesFeeder
   }
+  
   public void RunFeederState(){
     switch (mFeederEnumState) {
-      case S_BallEnters:
-      BallEnters();
+      case S_BallEntersFeeder:
+      BallEntersFeeder();
         break;
     
-      case S_BallLeaves:
-      BallLeaves();
+      case S_BallLeavesFeeder:
+      BallLeavesFeeder();
         break;
     }
   }
 
-  public void BallEnters(){
-    mFeederEnumState = FeederEnumState.S_BallEnters;
+  public void BallEntersFeeder(){
+    mFeederEnumState = FeederEnumState.S_BallEntersFeeder;
   }
-  public void BallLeaves(){
+  public void BallLeavesFeeder(){
 
   }
   @Override
