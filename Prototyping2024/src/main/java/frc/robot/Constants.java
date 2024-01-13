@@ -35,8 +35,12 @@ public final class Constants {
     public static final int kElevatorMotorLeft = 0;
     public static final int kElevatorMotorRight = 1;
   }
-  
-  
+
+  public static class BuddyClimbConstants {
+    public static final int kBuddyClimbMotorLeft = 0;
+    public static final int kBuddyClimbMotorRight = 1;
+
+  } 
     
   
 }

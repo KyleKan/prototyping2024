@@ -7,8 +7,10 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.ActivateBuddyClimb;
 import frc.robot.commands.ActivateElevator;
 import frc.robot.commands.Shoot;
+import frc.robot.subsystems.BuddyClimb;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Feeder;
@@ -28,6 +30,7 @@ public class RobotContainer {
 
   private final Feeder mFeeder = new Feeder();
   private final Elevator mElevator = new Elevator();
+  private final BuddyClimb mBuddyClimb = new BuddyClimb();
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
@@ -38,10 +41,13 @@ public class RobotContainer {
   public final Joystick mDriver = new Joystick(OperatorConstants.kDriverControllerPort);
   public final Joystick mCoDriver = new Joystick(OperatorConstants.kCoDriverControllerPort);
 
-  private final Trigger joystickdriver5 = new Trigger(mDriver.button(5, null));
-
+  private final Trigger joystickdriver5 = new Trigger(mDriver.button(5,null));
   private final Trigger joystickdriver6 = new Trigger(mDriver.button(6,null)); 
-  private final Trigger joystickdriver7 = new Trigger(mDriver.button(7,null));
+  private final Trigger joystickdriver4 = new Trigger(mDriver.button(4,null));
+  private final Trigger joystickcodriver5 = new Trigger(mCoDriver.button(5,null));
+  private final Trigger joystickcodriver3 = new Trigger(mCoDriver.button(3,null));
+  private final Trigger joystickcodriver6 = new Trigger(mCoDriver.button(6,null));
+  private final Trigger joystickcodriver4 = new Trigger(mCoDriver.button(4,null));
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -69,7 +75,11 @@ public class RobotContainer {
 
     joystickdriver5.toggleOnTrue(new Shoot(mFeeder));
     joystickdriver6.toggleOnTrue(new ActivateElevator(mElevator,1));
-    joystickdriver7.toggleOnTrue(new ActivateElevator(mElevator, -1));
+    joystickdriver4.toggleOnTrue(new ActivateElevator(mElevator, -1));
+    joystickcodriver5.whileTrue(new ActivateBuddyClimb(mBuddyClimb, 1, mBuddyClimb.BuddyClimbMotorLeft));
+    joystickcodriver3.whileTrue(new ActivateBuddyClimb(mBuddyClimb, -1, mBuddyClimb.BuddyClimbMotorLeft));
+    joystickcodriver6.whileTrue(new ActivateBuddyClimb(mBuddyClimb, 1, mBuddyClimb.BuddyClimbMotorRight));
+    joystickcodriver4.whileTrue(new ActivateBuddyClimb(mBuddyClimb, -1, mBuddyClimb.BuddyClimbMotorRight));
   }
 
   /**
