@@ -29,8 +29,14 @@ public final class Constants {
   }
   public static class FeederConstants{
     public static final int kFeederMotor = 4;
+  }
+
+  public static class ElevatorConstants {
+    public static final int kElevatorMotorLeft = 0;
+    public static final int kElevatorMotorRight = 1;
+  }
   
   
     
-  }
+  
 }
