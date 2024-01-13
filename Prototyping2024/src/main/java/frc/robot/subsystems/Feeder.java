@@ -6,37 +6,44 @@ package frc.robot.subsystems;
 import com.ctre.phoenix6.hardware.TalonFX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
-
+import frc.robot.subsystems.Shooter.ShooterState;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Feeder extends SubsystemBase {
   private TalonFX FeederMotor;
   public FeederEnumState mFeederEnumState;
+  private Shooter mShooter;
   /** Creates a new Feeder. */
+
   public enum FeederEnumState{
-    S_BallEntersFeeder, S_BallLeavesFeeder
+    S_WaitingOnIntake, S_DriverIsReady
+  }
+
+  public Feeder(){
+    mShooter = new Shooter();
+    FeederMotor = new TalonFX(Constants.FeederConstants.kFeederMotor);
+
+    mFeederEnumState = FeederEnumState.S_WaitingOnIntake;
   }
   
   public void RunFeederState(){
     switch (mFeederEnumState) {
-      case S_BallEntersFeeder:
-      BallEntersFeeder();
+      case S_WaitingOnIntake:
+        FeederMotor.stopMotor();
         break;
-    
-      case S_BallLeavesFeeder:
-      BallLeavesFeeder();
+      case S_DriverIsReady:
+      DriverIsReady();
         break;
     }
   }
 
-  public void BallEntersFeeder(){
-    mFeederEnumState = FeederEnumState.S_BallEntersFeeder;
-  }
-  public void BallLeavesFeeder(){
-
+  public void DriverIsReady(){
+    FeederMotor.set(0.1);
+    mShooter.mShooterState = ShooterState.S_Shoot;
   }
   @Override
   public void periodic() {
+    RunFeederState();
     // This method will be called once per scheduler run
   }
 }

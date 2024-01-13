@@ -19,11 +19,17 @@ public final class Constants {
   }
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
+    public static final int kCoDriverControllerPort = 1;
+
   }
 
   public static class IntakeConstants {
     public static final int IntakeMotor1 = 1;
     public static final int IntakeMotor2 = 2;
+  }
+  public static class FeederConstants{
+    public static final int kFeederMotor = 4;
+  
   
     
   }

@@ -13,7 +13,6 @@ import frc.robot.subsystems.Feeder.FeederEnumState;
 public class Intake extends SubsystemBase {
   private TalonFX IntakeM1;
   private TalonFX IntakeM2;
-  private Feeder mFeeder;
   
   public IntakeState mIntakeState;
 
@@ -27,7 +26,6 @@ public class Intake extends SubsystemBase {
   
     IntakeM1 = new TalonFX(Constants.IntakeConstants.IntakeMotor1);
     IntakeM2 = new TalonFX(Constants.IntakeConstants.IntakeMotor2);
-    mFeeder = new Feeder();
 
     mIntakeState = IntakeState.S_WaitingForBall;
   }
@@ -46,27 +44,20 @@ public class Intake extends SubsystemBase {
   public void WaitingForBall(){
     IntakeM1.set(0.1);
     IntakeM2.set(0.1);
-    if(IntakeM1.bannersensor() == true)
+    if(IntakeM1.getFault_ReverseHardLimit().getValue())
     {
-      mFeeder.mFeederEnumState = FeederEnumState.S_BallEntersFeeder;
       mIntakeState = IntakeState.S_WaitingForShooter;
     }
   }
 
   public void WaitingForShooter(){
     IntakeM1.set(0);
-    intakeM2.set(0);
-  }
-  
-  public void SETSpeed(double MotorSpeed){
-    IntakeM1.set(MotorSpeed);
+    IntakeM2.set(0);
   }
 
-  public void SETSpeed2(double MotorSpeed){
-    IntakeM2.set(MotorSpeed);
-  }
   @Override
   public void periodic() {
+  RunIntakeState();
     // This method will be called once per scheduler run
   }
 }
