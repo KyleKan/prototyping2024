@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import java.util.function.DoubleSupplier;
 
+import com.ctre.phoenix6.controls.VelocityDutyCycle;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -54,8 +55,8 @@ public class Shooter extends SubsystemBase {
   }
 
 public void Shoot(){
-  ShooterLeft.set(DoubleSupplier(mDriver));
-  ShooterRight.set(DoubleSupplier(mCoDriver));
+  ShooterLeft.set(DoubleSupplier(mDriver).Velocity);
+  ShooterRight.set(DoubleSupplier(mCoDriver).Velocity);
   mTimer.start();
   if(mTimer.hasElapsed(5))
   {
@@ -67,16 +68,18 @@ public void Shoot(){
   }
 }
 
-public double DoubleSupplier(Joystick joystick){
-  DoubleSupplier Speed = ()-> (joystick.getThrottle() + 1)/2;
-  return Speed.getAsDouble();
+public VelocityDutyCycle DoubleSupplier(Joystick joystick){
+  DoubleSupplier Speed = ()-> (joystick.getThrottle() + 1)/2 * 6380;
+  VelocityDutyCycle mSpeed = new VelocityDutyCycle(Speed.getAsDouble());
+  return mSpeed;
 }
 
   @Override
   public void periodic() {
+    
     RunShooterState();
-    SmartDashboard.putNumber("LeftThrottle", DoubleSupplier(mDriver));
-    SmartDashboard.putNumber("LeftThrottle", DoubleSupplier(mCoDriver));
+    SmartDashboard.putNumber("LeftThrottle", DoubleSupplier(mDriver).Velocity);
+    SmartDashboard.putNumber("RightThrottle", DoubleSupplier(mCoDriver).Velocity);
     // This method will be called once per scheduler run
   }
 }

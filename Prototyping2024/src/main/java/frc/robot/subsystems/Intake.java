@@ -8,7 +8,6 @@ import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.subsystems.Feeder.FeederEnumState;
 
 public class Intake extends SubsystemBase {
   private TalonFX IntakeM1;
@@ -44,7 +43,7 @@ public class Intake extends SubsystemBase {
   public void WaitingForBall(){
     IntakeM1.set(0.1);
     IntakeM2.set(0.1);
-    if(IntakeM1.getFault_ReverseHardLimit().getValue())
+    if(IntakeM1.getFault_ForwardHardLimit().getValue())
     {
       mIntakeState = IntakeState.S_WaitingForShooter;
     }

@@ -4,7 +4,6 @@
 
 package frc.robot.subsystems;
 import com.ctre.phoenix6.hardware.TalonFX;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 import frc.robot.subsystems.Shooter.ShooterState;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
