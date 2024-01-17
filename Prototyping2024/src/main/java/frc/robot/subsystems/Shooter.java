@@ -20,7 +20,7 @@ import frc.robot.subsystems.Intake.IntakeState;
 
 public class Shooter extends SubsystemBase {
   public TalonFX ShooterLeft;
-  private TalonFX ShooterRight;
+  public TalonFX ShooterRight;
 
   private Timer mTimer = new Timer();
 
@@ -55,7 +55,7 @@ public class Shooter extends SubsystemBase {
   }
 
 public void Shoot(){
-  ShooterLeft.set(DoubleSupplier(mDriver).Velocity);
+  ShooterLeft.set(DoubleSupplier(mDriver).Velocity /*find a way to slow down the setting speed*/ );
   ShooterRight.set(DoubleSupplier(mCoDriver).Velocity);
   mTimer.start();
   if(mTimer.hasElapsed(5))

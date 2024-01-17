@@ -38,9 +38,10 @@ public class Feeder extends SubsystemBase {
 
   public void DriverIsReady(Shooter mShooter){
     mShooter.mShooterState = ShooterState.S_Shoot;
-    if(mShooter.ShooterLeft.getVelocity().getValueAsDouble() == 1){
-      FeederMotor.set(0.1);
-    }
+     if(mShooter.ShooterLeft.getVelocity().getValueAsDouble() == mShooter.DoubleSupplier(mShooter.mDriver).Velocity && 
+      mShooter.ShooterRight.getVelocity().getValueAsDouble() == mShooter.DoubleSupplier(mShooter.mDriver).Velocity){
+       FeederMotor.set(0.1);
+     }
   }
   @Override
   public void periodic() {
