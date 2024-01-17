@@ -31,14 +31,16 @@ public class Feeder extends SubsystemBase {
         FeederMotor.stopMotor();
         break;
       case S_DriverIsReady:
-      DriverIsReady();
+      DriverIsReady(mShooter);
         break;
     }
   }
 
-  public void DriverIsReady(){
-    FeederMotor.set(0.1);
+  public void DriverIsReady(Shooter mShooter){
     mShooter.mShooterState = ShooterState.S_Shoot;
+    if(mShooter.ShooterLeft.getVelocity().getValueAsDouble() == 1){
+      FeederMotor.set(0.1);
+    }
   }
   @Override
   public void periodic() {

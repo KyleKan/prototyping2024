@@ -19,7 +19,7 @@ import frc.robot.subsystems.Feeder.FeederEnumState;
 import frc.robot.subsystems.Intake.IntakeState;
 
 public class Shooter extends SubsystemBase {
-  private TalonFX ShooterLeft;
+  public TalonFX ShooterLeft;
   private TalonFX ShooterRight;
 
   private Timer mTimer = new Timer();
