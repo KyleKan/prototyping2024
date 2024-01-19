@@ -20,17 +20,13 @@ public class Shooter extends SubsystemBase {
     //ShooterM2.setInverted(Constants.Shooter.sm2InvertMode);
     //ShooterM1.setNeutralMode(Constants.Shooter.sm1NeutralMode);
     //ShooterM2.setNeutralMode(Constants.Shooter.sm2NeutralMode);
-    ShooterM1 = new TalonFX(Constants.Shooter.ShooterMotor1);
-    ShooterM2 = new TalonFX(Constants.Shooter.ShooterMotor2);
+    ShooterM1 = new TalonFX(Constants.ShooterConstants.Shootermotor1);
+    ShooterM2 = new TalonFX(Constants.ShooterConstants.Shootermotor2);
   }
 
-  public void SETSpeed(double MotorSpeed) {
-    ShooterM1.set(MotorSpeed);
-
-  }
-
-  public void SETSpeed2(double MotorSpeed) {
-    ShooterM2.set(MotorSpeed);
+  public void SetSpeed(double MotorSpeed1, double MotorSpeed2) {
+    ShooterM1.set(MotorSpeed1);
+    ShooterM2.set(MotorSpeed2);
   }
 
   @Override

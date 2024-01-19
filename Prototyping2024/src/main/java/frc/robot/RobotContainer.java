@@ -35,7 +35,7 @@ public class RobotContainer {
       OperatorConstants.kDriverControllerPort);*/
 
   private final CommandJoystick mDriver = new CommandJoystick(OperatorConstants.mDriverControllerPort);
-  private final CommandJoystick mCoDriver = new CommandJoystick(OperatorConstants.cDriverControllerPort);
+  private final CommandJoystick mCoDriver = new CommandJoystick(OperatorConstants.coDriverControllerPort);
   private Trigger joystickA = new Trigger(mDriver.button(12));
 
   /**
