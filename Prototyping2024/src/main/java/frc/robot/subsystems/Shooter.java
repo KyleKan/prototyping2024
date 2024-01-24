@@ -7,6 +7,8 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+
+import com.ctre.phoenix6.controls.StrictFollower;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 public class Shooter extends SubsystemBase {
@@ -22,6 +24,8 @@ public class Shooter extends SubsystemBase {
     //ShooterM2.setNeutralMode(Constants.Shooter.sm2NeutralMode);
     ShooterM1 = new TalonFX(Constants.ShooterConstants.Shootermotor1);
     ShooterM2 = new TalonFX(Constants.ShooterConstants.Shootermotor2);
+
+    ShooterM1.setControl(new StrictFollower(ShooterM2.getDeviceID()));
   }
 
   public void SetSpeed(double MotorSpeed1, double MotorSpeed2) {
@@ -29,9 +33,14 @@ public class Shooter extends SubsystemBase {
     ShooterM2.set(MotorSpeed2);
   }
 
+  public void Motor1Speed(double MotorSpeed) {
+    ShooterM1.set(MotorSpeed);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+      SmartDashboard.putNumber("Velocity", 0);
       SmartDashboard.putNumber("rpmShooterM1", ShooterM1.getVelocity().getValueAsDouble()*60);
       SmartDashboard.putNumber("rpmShooterM2",60 *  ShooterM2.getVelocity().getValueAsDouble());
   }

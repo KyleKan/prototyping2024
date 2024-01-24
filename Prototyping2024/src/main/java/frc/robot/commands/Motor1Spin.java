@@ -4,24 +4,17 @@
 
 package frc.robot.commands;
 
-import java.util.function.DoubleSupplier;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Shooter;
 
-public class Shoot extends Command {
+public class Motor1Spin extends Command {
   private Shooter mShooter;
-  private DoubleSupplier x;
-  private DoubleSupplier y;
 
-
-  /** Creates a new Shoot. */
-  public Shoot(Shooter mShooter, DoubleSupplier xs, DoubleSupplier ys){
-    this.mShooter = mShooter;
-    this.x = xs;
-    this.y = ys;
+  /** Creates a new Motor1Spin. */
+  public Motor1Spin(Shooter mShooter) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(mShooter);
+    this.mShooter = mShooter; 
   }
 
   // Called when the command is initially scheduled.
@@ -31,14 +24,13 @@ public class Shoot extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mShooter.SetSpeed(x.getAsDouble(),y.getAsDouble());
+    double SDspeed = SmartDashboard.getNumber("Velocity", 0);
+    mShooter.Motor1Speed(SDspeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    mShooter.SetSpeed(0,0);
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
