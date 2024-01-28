@@ -14,17 +14,21 @@ public class Motor1Spin extends Command {
   /** Creates a new Motor1Spin. */
   public Motor1Spin(Shooter mShooter) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.mShooter = mShooter; 
+    this.mShooter = mShooter;
+    addRequirements(mShooter);
   }
+  
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     double SDspeed = SmartDashboard.getNumber("Velocity", 0);
+    SmartDashboard.putNumber("getName()", SDspeed);
     mShooter.Motor1Speed(SDspeed);
   }
 

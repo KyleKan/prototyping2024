@@ -4,9 +4,6 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.InvertType;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix6.signals.NeutralModeValue;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -22,8 +19,8 @@ import com.ctre.phoenix6.signals.NeutralModeValue;
  */
 public final class Constants {
   public static final class ShooterConstants {
-    public static final int Shootermotor1 = 1;
-    public static final int Shootermotor2 = 2;
+    public static final int Shootermotor1 = 25;
+    public static final int Shootermotor2 = 26;  
 
     // public static final NeutralModeValue sm1NeutralMode = NeutralModeValue.Brake;
     // public static final NeutralModeValue sm2NeutralMode = NeutralModeValue.Brake;
