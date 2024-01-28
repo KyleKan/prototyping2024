@@ -28,36 +28,6 @@ public class Shooter extends SubsystemBase {
   private TalonFX ShooterM2;
   double sp;
 
-  public final class CtreUtils {
-
-
-    public static TalonFXConfiguration generateFXDriveMotorConfig() {
-      TalonFXConfiguration motorConfig = new TalonFXConfiguration();
-  
-      motorConfig.Feedback.FeedbackSensorSource = FeedbackSensorSourceValue.RotorSensor;
-      motorConfig.Slot0.kV = 0.1185;
-      motorConfig.Slot0.kP = 0.24;
-      motorConfig.Slot0.kI = 0.0;
-      motorConfig.Slot0.kD = 0.0;
-  
-      motorConfig.Voltage.PeakForwardVoltage = 12;
-      motorConfig.Voltage.PeakReverseVoltage = -12;
-  
-      motorConfig.CurrentLimits.SupplyCurrentLimit = 35;
-      motorConfig.CurrentLimits.SupplyCurrentThreshold = 60;
-      motorConfig.CurrentLimits.SupplyTimeThreshold = 0.1;
-      motorConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
-  
-      motorConfig.OpenLoopRamps.VoltageOpenLoopRampPeriod = 0.25; // TO
-      // DO adjust this later
-      motorConfig.ClosedLoopRamps.VoltageClosedLoopRampPeriod = 0.1; // TODO Adjust this later
-  
-      motorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
-      motorConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
-  
-      return motorConfig;
-    }
-}
 
   /** Creates a new Shooter. */
   public Shooter() {
